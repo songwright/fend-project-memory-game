@@ -38,7 +38,13 @@ function shuffle(array) {
  */
 
  // Click on a card to open it
-document.addEventListener('click', function openCard(evt){
-  var clickedOnCell = evt.target;
-  clickedOnCell.className = 'card open show';
-})
+ document.addEventListener('click', function(event){
+   showCard(event);
+   }
+ );
+
+// Show the card
+function showCard(evt){
+   var clickedOnCell = evt.target;
+   clickedOnCell.className = 'card open show';
+ };
