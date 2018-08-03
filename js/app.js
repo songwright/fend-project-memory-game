@@ -46,5 +46,5 @@ function shuffle(array) {
 // Show the card
 function showCard(evt){
    var clickedOnCell = evt.target;
-   clickedOnCell.className = 'card open show';
+   clickedOnCell.className = 'card open';
  };
