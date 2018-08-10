@@ -28,6 +28,18 @@ function shuffle(array) {
 
 shuffle(cardList);
 
+// loop through each card and create its HTML and assign card symbols to cards in the deck
+function assignCards() {
+  const cardSymbol = ""
+  for (let i=0;i<16;i++){
+    const cardID = 'card' + i.toString();
+    const cardSymbol = document.getElementById(cardID);
+    cardSymbol.className = cardList[i];
+  }
+}
+
+assignCards();
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
