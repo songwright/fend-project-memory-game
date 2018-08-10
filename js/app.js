@@ -2,7 +2,8 @@
  * Create a list that holds all of your cards
  */
 
- const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
+const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
+const openCardList = [];
 
 /*
  * Display the cards on the page
@@ -54,6 +55,7 @@ assignCards();
  // Click on a card to open it
  document.addEventListener('click', function(event){
    showCard(event);
+   addCard(event);
    }
  );
 
@@ -61,4 +63,10 @@ assignCards();
 function showCard(evt){
    var clickedOnCell = evt.target;
    clickedOnCell.className = 'card open';
- };
+ }
+
+ // Add the card to the list of open cards.
+ function addCard(evt){
+   const clickedOnCard = evt.target;
+   openCardList.push(clickedOnCard.firstElementChild.id); // Put the id of the card in the list of open cards.
+ }
