@@ -54,8 +54,11 @@ assignCards();
 
  // Click on a card to open it
  document.addEventListener('click', function(event){
-   showCard(event);
-   addCard(event);
+   const clickedOnCard = event.target;
+   if (clickedOnCard.className === 'card') { // Restrict the event listener to only act on cards
+     showCard(event);
+     addCard(event);
+    }
    }
  );
 
