@@ -41,6 +41,15 @@ function assignCards() {
 
 assignCards();
 
+// Turn all the cards face down.
+function allCardsDown() {
+  for (let i=0;i<16;i++){
+    const cardID = 'card' + i.toString();
+    const card = document.getElementById(cardID);
+    card.parentElement.className = 'card';
+  }
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
