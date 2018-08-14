@@ -50,6 +50,13 @@ function allCardsDown() {
   }
 }
 
+// Restart the game.
+function restart() {
+  shuffle(cardList);
+  assignCards();
+  allCardsDown();
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -67,7 +74,9 @@ document.addEventListener('click', function(event){
   if (clickedOnCard.className === 'card') { // Restrict the event listener to only act on cards
     showCard(event);
     addCard(event);
-  }
+  } else if (clickedOnCard.className === 'fa fa-repeat') { // The listener also works on the reset button.
+      restart();
+    }
 });
 
 // Show the card
