@@ -75,9 +75,17 @@ h1 {
 }
 
 .deck .card.match {
-    cursor: default;
+    transform: rotateY(0deg);
     background: #02ccba;
     font-size: 33px;
+    cursor: default;
+}
+
+.deck .card.fail {
+  transform: rotateY(0deg);
+  font-size: 33px;
+  transition: background-color 500ms;
+  background-color: red;
 }
 
 /*
