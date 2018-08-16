@@ -3,7 +3,7 @@
  */
 
 const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
-const openCardList = [];
+const openCardList = []; // A list of the two cards current turned face up
 
 /*
  * Display the cards on the page
@@ -72,14 +72,15 @@ function restart() {
 document.addEventListener('click', function(event){
   const clickedOnCard = event.target;
   if (clickedOnCard.className === 'card') { // Restrict the event listener to only act on cards
-    showCard(event);
-    addCard(event);
+    showCard(event); // Show the card.
+    addCard(event); // Add the card to the list of open cards.
+    checkMatch(event); // Check for a match.
   } else if (clickedOnCard.className === 'fa fa-repeat') { // The listener also works on the reset button.
       restart();
     }
 });
 
-// Show the card
+// Show the card.
 function showCard(evt){
   var clickedOnCell = evt.target;
   clickedOnCell.className = 'card open';
@@ -89,4 +90,24 @@ function showCard(evt){
 function addCard(evt){
   const clickedOnCard = evt.target;
   openCardList.push(clickedOnCard.firstElementChild.id); // Put the id of the card in the list of open cards.
+}
+
+// Check for a match.
+function checkMatch(){
+  if (openCardList.length === 2) {
+    const card1symbol = document.getElementById(openCardList[0]).className;
+    const card2symbol = document.getElementById(openCardList[1]).className;
+    if (card1symbol === card2symbol) {
+      setTimeout(moveSucceed, 500); // The symbols match. Call moveSucceed().
+    }
+  }
+}
+
+// Change the matching cards to the card match style.
+function moveSucceed () {
+  const match1 = document.getElementById(openCardList[0]);
+  const match2 = document.getElementById(openCardList[1]);
+  match1.parentElement.className = 'card match';
+  match2.parentElement.className = 'card match';
+  openCardList.splice(0,2); // Reset openCardList
 }
