@@ -79,6 +79,8 @@ h1 {
     background: #02ccba;
     font-size: 33px;
     cursor: default;
+    animation-name: correct;
+    animation-duration: 1000ms;
 }
 
 .deck .card.fail {
@@ -86,6 +88,47 @@ h1 {
   font-size: 33px;
   transition: background-color 500ms;
   background-color: red;
+  animation-name: wrong;
+  animation-duration: 500ms;
+}
+
+/*
+ * Styles for animations
+ */
+
+ /* Apply squash-and-stretch animation to matching cards. */
+ @keyframes correct {
+     0%, 100% {
+     transform: scale(1, 1);
+     }
+     50% {
+     transform: scale(1.25, .75);
+     }
+     70% {
+     transform: scale(.75, 1.25);
+     }
+     80% {
+     transform: scale(1.1, .9);
+     }
+     90% {
+     transform: scale(.9, 1.1);
+     }
+ }
+
+/* Apply alarm animation to non-matching cards. */
+@keyframes wrong {
+    0%, 100% {
+    transform: rotateZ(0deg);
+    transform-origin: 63px 250px;
+    }
+    25% {
+    transform: rotateZ(-5deg);
+    transform-origin: 63px 250px;
+    }
+    50% {
+    transform: rotateZ(5deg);
+    transform-origin: 63px 250px;
+    }
 }
 
 /*

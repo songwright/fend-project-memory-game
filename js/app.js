@@ -120,7 +120,7 @@ function moveFail () {
     const mismatch2 = document.getElementById(openCardList[1]);
     mismatch1.parentElement.className = 'card fail';
     mismatch2.parentElement.className = 'card fail';
-    setTimeout(faceCardsDown, 500); // Wait for card fail transition to finish
+    setTimeout(faceCardsDown, 1000); // Wait for card fail and card transition to finish
 }
 
 // Cards are turned face down.
