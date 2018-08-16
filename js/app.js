@@ -99,6 +99,8 @@ function checkMatch(){
     const card2symbol = document.getElementById(openCardList[1]).className;
     if (card1symbol === card2symbol) {
       setTimeout(moveSucceed, 500); // The symbols match. Call moveSucceed().
+    } else {
+      setTimeout(moveFail, 500); // The symbols do not match. Call moveFail().
     }
   }
 }
@@ -110,4 +112,22 @@ function moveSucceed () {
   match1.parentElement.className = 'card match';
   match2.parentElement.className = 'card match';
   openCardList.splice(0,2); // Reset openCardList
+}
+
+// Display failed move style.
+function moveFail () {
+    const mismatch1 = document.getElementById(openCardList[0]);
+    const mismatch2 = document.getElementById(openCardList[1]);
+    mismatch1.parentElement.className = 'card fail';
+    mismatch2.parentElement.className = 'card fail';
+    setTimeout(faceCardsDown, 500); // Wait for card fail transition to finish
+}
+
+// Cards are turned face down.
+function faceCardsDown () {
+    const mismatch1 = document.getElementById(openCardList[0]); // Get the first card in the card list.
+    const mismatch2 = document.getElementById(openCardList[1]); // Get the second card in the card list.
+    mismatch1.parentElement.className = 'card';
+    mismatch2.parentElement.className = 'card';
+    openCardList.splice(0,2); // Reset the open card list.
 }
