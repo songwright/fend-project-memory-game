@@ -4,6 +4,7 @@
 
 const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
 const openCardList = []; // A list of the two cards current turned face up
+let clickCount = 0; // A count of the number of clicks since the last pair result
 
 /*
  * Display the cards on the page
@@ -71,7 +72,8 @@ function restart() {
 // Click on a card to open it.
 document.addEventListener('click', function(event){
   const clickedOnCard = event.target;
-  if (clickedOnCard.className === 'card') { // Restrict the event listener to only act on cards
+  if (clickedOnCard.className === 'card' && clickCount < 2) { // Restrict the event listener to only act on only 2 cards.
+    clickCount +=1;
     showCard(event); // Show the card.
     addCard(event); // Add the card to the list of open cards.
     checkMatch(event); // Check for a match.
@@ -164,4 +166,5 @@ function faceCardsDown () {
     mismatch1.parentElement.className = 'card';
     mismatch2.parentElement.className = 'card';
     openCardList.splice(0,2); // Reset the open card list.
+    clickCount = 0; // Reset the click count.
 }
