@@ -29,7 +29,7 @@ function shuffle(array) {
 
 shuffle(cardList);
 
-// loop through each card and create its HTML and assign card symbols to cards in the deck
+// loop through each card and create its HTML and assign card symbols to cards in the deck.
 function assignCards() {
   const cardSymbol = ""
   for (let i=0;i<16;i++){
@@ -68,7 +68,7 @@ function restart() {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-// Click on a card to open it
+// Click on a card to open it.
 document.addEventListener('click', function(event){
   const clickedOnCard = event.target;
   if (clickedOnCard.className === 'card') { // Restrict the event listener to only act on cards
@@ -109,9 +109,31 @@ function checkMatch(){
 function moveSucceed () {
   const match1 = document.getElementById(openCardList[0]);
   const match2 = document.getElementById(openCardList[1]);
+  const symbolList = ['fa fa-smile-o', 'fa fa-thumbs-up', 'fa fa-heart']
+  // Choose a random success symbol.
+  randomIndex = Math.floor(Math.random() * 3);
+  let successSymbol = symbolList[randomIndex];
+  // Change the symbols to a success symbol.
+  match1.className = successSymbol;
+  match2.className = successSymbol;
+  console.log('randomIndex = ' + randomIndex);
+  console.log(successSymbol);
   match1.parentElement.className = 'card match';
   match2.parentElement.className = 'card match';
-  openCardList.splice(0,2); // Reset openCardList
+  setTimeout(lockCards, 1000); // Wait for transitions to finish.
+}
+
+//  Lock the cards in open position if they match.
+function lockCards () {
+  const match1 = document.getElementById(openCardList[0]); // Get the first card in the card list.
+  const match2 = document.getElementById(openCardList[1]); // Get the first second in the card list.
+  const cardListIndex1 = openCardList[0].slice(4); // Get the index number of the first card's id.
+  const cardListIndex2 = openCardList[1].slice(4); // Get the index number of the second card's id.
+  // Return the symbols to their original values from cardList.
+  match1.className = cardList[cardListIndex1];
+  match2.className = cardList[cardListIndex2];
+  openCardList.splice(0,2); // Reset openCardList.
+  clickCount = 0; // Reset the click count.
 }
 
 // Display failed move style.
@@ -126,7 +148,7 @@ function moveFail () {
     mismatch2.className = failureSymbol;
     mismatch1.parentElement.className = 'card fail';
     mismatch2.parentElement.className = 'card fail';
-    setTimeout(faceCardsDown, 1000); // Wait for card fail and card transition to finish
+    setTimeout(faceCardsDown, 1000); // Wait for card fail and card transition to finish.
 }
 
 // Cards are turned face down.
