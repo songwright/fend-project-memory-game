@@ -4,7 +4,8 @@
 
 const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
 const openCardList = []; // A list of the two cards current turned face up
-let clickCount = 0; // A count of the number of clicks since the last pair result
+var clickCount = 0; // A count of the number of clicks since the last pair result
+var moveNumber = 0; // A count of the number of moves made
 
 /*
  * Display the cards on the page
@@ -56,6 +57,8 @@ function restart() {
   shuffle(cardList);
   assignCards();
   allCardsDown();
+  moveNumber = 0;
+  document.getElementById("moveCounter").innerText = 0; // Reset the move count display to 0.
 }
 
 /*
@@ -104,6 +107,7 @@ function checkMatch(){
     } else {
       setTimeout(moveFail, 500); // The symbols do not match. Call moveFail().
     }
+    moveCounter(); // Increment the move counter.
   }
 }
 
@@ -167,4 +171,12 @@ function faceCardsDown () {
     mismatch2.parentElement.className = 'card';
     openCardList.splice(0,2); // Reset the open card list.
     clickCount = 0; // Reset the click count.
+}
+
+// Increment the move counter and display it on the page.
+var moveNumber = 0;
+function moveCounter () {
+  moveNumber +=1;
+  const moveSpan = document.getElementById("moveCounter");
+  moveSpan.innerText = moveNumber;
 }
