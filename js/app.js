@@ -59,6 +59,8 @@ function restart() {
   allCardsDown();
   moveNumber = 0;
   document.getElementById("moveCounter").innerText = 0; // Reset the move count display to 0.
+  document.getElementById('star2').className = "fa fa-star"; //Reset the stars.
+  document.getElementById('star3').className = "fa fa-star";
 }
 
 /*
@@ -108,6 +110,7 @@ function checkMatch(){
       setTimeout(moveFail, 500); // The symbols do not match. Call moveFail().
     }
     moveCounter(); // Increment the move counter.
+    starNumber(); // Check the number of moves to update the number of stars.
   }
 }
 
@@ -179,4 +182,14 @@ function moveCounter () {
   moveNumber +=1;
   const moveSpan = document.getElementById("moveCounter");
   moveSpan.innerText = moveNumber;
+}
+
+// Update the stars.
+function starNumber() {
+  if (moveNumber > 16) {
+    document.getElementById('star3').className = "fa fa-star-o"; // Remove a star if there are more than 16 moves.
+  };
+if (moveNumber > 32) {
+  document.getElementById('star2').className = "fa fa-star-o"; // Remove another star if there are more than 32 moves.
+  }
 }
