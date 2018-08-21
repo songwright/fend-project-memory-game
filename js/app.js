@@ -6,6 +6,7 @@ const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa f
 const openCardList = []; // A list of the two cards current turned face up
 var clickCount = 0; // A count of the number of clicks since the last pair result
 var moveNumber = 0; // A count of the number of moves made
+var stars = 3; // The number of stars based on moves made
 
 /*
  * Display the cards on the page
@@ -143,6 +144,7 @@ function lockCards () {
   match2.className = cardList[cardListIndex2];
   openCardList.splice(0,2); // Reset openCardList.
   clickCount = 0; // Reset the click count.
+  finalScore(); // Check for the victory condition.
 }
 
 // Display failed move style.
@@ -177,7 +179,6 @@ function faceCardsDown () {
 }
 
 // Increment the move counter and display it on the page.
-var moveNumber = 0;
 function moveCounter () {
   moveNumber +=1;
   const moveSpan = document.getElementById("moveCounter");
@@ -188,8 +189,30 @@ function moveCounter () {
 function starNumber() {
   if (moveNumber > 16) {
     document.getElementById('star3').className = "fa fa-star-o"; // Remove a star if there are more than 16 moves.
+    stars = 2;
   };
 if (moveNumber > 32) {
   document.getElementById('star2').className = "fa fa-star-o"; // Remove another star if there are more than 32 moves.
+  stars = 1;
   }
+}
+
+// Display final score message when all the cards match.
+function finalScore () {
+  const cardMatches = document.getElementsByClassName('match');
+  if (cardMatches.length === 16) {
+    const victoryPopUp = document.getElementById('PopUp');
+    document.getElementById('moveScore').innerHTML = moveNumber;
+    document.getElementById('starScore').innerHTML = stars;
+    if (moveNumber > 32) {
+      document.getElementById('starPluralState').innerHTML = 'star';
+    };
+    victoryPopUp.style.display = "block";
+  }
+}
+
+// Restart the game when the final score button is clicked.
+function playAgain () {
+  document.getElementById('PopUp').style.display = 'none';
+  restart();
 }

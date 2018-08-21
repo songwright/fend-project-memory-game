@@ -157,3 +157,58 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the final score message
+ */
+
+.final-score-popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+}
+
+.popup-content {
+  width: 600px;
+  height: 400px;
+  background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+  margin: 100px auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  animation-name: win;
+  animation-duration: 500ms;
+}
+
+.popup-content header {
+  padding-top: 100px;
+}
+
+.popup-content button {
+  height: 30px;
+  width: 135px;
+  color: #ffffff;
+  border: 0px;
+  border-radius: 4px;
+  background: #02b3e4;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Apply squash-and-stretch animation to message screen. */
+@keyframes win {
+    0%, 100% {
+    transform: scale(1, 1);
+    }
+    33% {
+    transform: scale(1.05, 1.05);
+    }
+    66% {
+    transform: scale(0.95, 0.95);
+    }
+}
