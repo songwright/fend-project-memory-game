@@ -32,16 +32,31 @@ function shuffle(array) {
 
 shuffle(cardList);
 
+// loop through each card and create its HTML and assign card symbols to cards in the deck
+function deckOfCards () {
+  const deckList = document.getElementById("deckList");
+  for (let i=0;i<16;i++) {
+    const line = document.createElement("li"); // Create a line item.
+    const faCard = document.createElement("i"); // Create a Font Awesome element.
+    var cardID = 'card' + i.toString(); // Create a unique id for a Font Awesome Element.
+    deckList.appendChild(line); // Put the line item into the deck.
+    line.className = "card"; // Make the line item a card.
+    line.appendChild(faCard); // Put a Font Awesome element into each card.
+    faCard.id = cardID; // Give each Font Awesome element a unique id.
+  };
+}
+
 // loop through each card and create its HTML and assign card symbols to cards in the deck.
 function assignCards() {
-  const cardSymbol = ""
+  const cardSymbol = "";
   for (let i=0;i<16;i++){
     const cardID = 'card' + i.toString();
     const cardSymbol = document.getElementById(cardID);
     cardSymbol.className = cardList[i];
-  }
+  };
 }
 
+deckOfCards();
 assignCards();
 
 // Turn all the cards face down.
