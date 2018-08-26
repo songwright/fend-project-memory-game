@@ -48,7 +48,6 @@ function deckOfCards () {
 
 // loop through each card and create its HTML and assign card symbols to cards in the deck.
 function assignCards() {
-  const cardSymbol = "";
   for (let i=0;i<16;i++){
     const cardID = 'card' + i.toString();
     const cardSymbol = document.getElementById(cardID);
@@ -77,6 +76,7 @@ function restart() {
   document.getElementById("moveCounter").innerText = 0; // Reset the move count display to 0.
   document.getElementById('star2').className = "fa fa-star"; //Reset the stars.
   document.getElementById('star3').className = "fa fa-star";
+  stars = 3;
 }
 
 /*
