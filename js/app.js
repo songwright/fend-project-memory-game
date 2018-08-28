@@ -7,6 +7,8 @@ const openCardList = []; // A list of the two cards current turned face up
 var clickCount = 0; // A count of the number of clicks since the last pair result
 var moveNumber = 0; // A count of the number of moves made
 var stars = 3; // The number of stars based on moves made
+var clock = document.getElementsByTagName('time')[0],
+    seconds = 0, minutes = 0, t; // Timer variables
 
 /*
  * Display the cards on the page
@@ -42,7 +44,7 @@ function deckOfCards () {
     deckList.appendChild(line); // Put the line item into the deck.
     line.className = "card"; // Make the line item a card.
     line.appendChild(faCard); // Put a Font Awesome element into each card.
-    faCard.id = cardID; // Give each Font Awesome element a unique id.
+    faCard.id = cardID; // Give each Font Awesome element a unique id  to enable symbol change.
   };
 }
 
@@ -77,6 +79,8 @@ function restart() {
   document.getElementById('star2').className = "fa fa-star"; //Reset the stars.
   document.getElementById('star3').className = "fa fa-star";
   stars = 3;
+  stopClock();
+  clearClock();
 }
 
 /*
@@ -127,6 +131,9 @@ function checkMatch(){
     }
     moveCounter(); // Increment the move counter.
     starNumber(); // Check the number of moves to update the number of stars.
+    if (moveNumber === 1) { // Start the timer.
+      timer();
+    }
   }
 }
 
@@ -141,8 +148,6 @@ function moveSucceed () {
   // Change the symbols to a success symbol.
   match1.className = successSymbol;
   match2.className = successSymbol;
-  console.log('randomIndex = ' + randomIndex);
-  console.log(successSymbol);
   match1.parentElement.className = 'card match';
   match2.parentElement.className = 'card match';
   setTimeout(lockCards, 1000); // Wait for transitions to finish.
@@ -215,10 +220,12 @@ if (moveNumber > 32) {
 // Display final score message when all the cards match.
 function finalScore () {
   const cardMatches = document.getElementsByClassName('match');
-  if (cardMatches.length === 16) {
+  if (cardMatches.length === 2) {
     const victoryPopUp = document.getElementById('PopUp');
+    stopClock();
     document.getElementById('moveScore').innerHTML = moveNumber;
     document.getElementById('starScore').innerHTML = stars;
+    document.getElementById('gameTime').innerHTML = minutes + ' minutes and ' + seconds + ' seconds';
     if (moveNumber > 32) {
       document.getElementById('starPluralState').innerHTML = 'star';
     };
@@ -230,4 +237,27 @@ function finalScore () {
 function playAgain () {
   document.getElementById('PopUp').style.display = 'none';
   restart();
+}
+
+function tick() {
+  seconds +=1;
+  if (seconds >= 60) {
+    seconds = 0;
+    minutes +=1;
+  }
+  clock.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+  timer();
+}
+
+function timer() {
+    t = setTimeout(tick, 1000);
+}
+
+function stopClock () {
+  clearTimeout(t);
+}
+
+function clearClock () {
+  clock.textContent = "00:00";
+    seconds = 0; minutes = 0;
 }
