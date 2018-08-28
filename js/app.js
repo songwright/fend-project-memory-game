@@ -4,10 +4,10 @@
 
 const cardList = ['fa fa-diamond', 'fa fa-diamond', 'fa fa-paper-plane-o', 'fa fa-paper-plane-o', 'fa fa-anchor', 'fa fa-anchor', 'fa fa-bolt', 'fa fa-bolt', 'fa fa-cube', 'fa fa-cube', 'fa fa-leaf', 'fa fa-leaf', 'fa fa-bicycle', 'fa fa-bicycle', 'fa fa-bomb', 'fa fa-bomb'];
 const openCardList = []; // A list of the two cards current turned face up
-var clickCount = 0; // A count of the number of clicks since the last pair result
-var moveNumber = 0; // A count of the number of moves made
-var stars = 3; // The number of stars based on moves made
-var clock = document.getElementsByTagName('time')[0], // Timer variables
+let clickCount = 0; // A count of the number of clicks since the last pair result
+let moveNumber = 0; // A count of the number of moves made
+let stars = 3; // The number of stars based on moves made
+let clock = document.getElementsByTagName('time')[0], // Timer variables
     seconds = 0,
     minutes = 0,
     t;
@@ -21,7 +21,7 @@ var clock = document.getElementsByTagName('time')[0], // Timer variables
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    let currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
@@ -111,7 +111,7 @@ document.addEventListener('click', function(event){
 
 // Show the card.
 function showCard(evt){
-    var clickedOnCell = evt.target;
+    let clickedOnCell = evt.target;
     clickedOnCell.className = "card open";
 }
 
