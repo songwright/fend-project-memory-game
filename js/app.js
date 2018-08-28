@@ -241,6 +241,7 @@ function playAgain () {
     restart();
 }
 
+// Timer functions based on a timer by Daniel Hug https://jsfiddle.net/Daniel_Hug/pvk6p/
 function tick() {
     seconds +=1;
     if (seconds >= 60) { // The hexigesimal number base for seconds converts them to minutes at 60 seconds.
