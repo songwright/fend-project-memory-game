@@ -1,14 +1,14 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Matching Game</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
 <body>
 
     <div class="container">
@@ -17,34 +17,32 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i id="star2" class="fa fa-star"></i></li>
-        		<li><i id="star3" class="fa fa-star"></i></li>
-        	</ul>
+            <ul class="stars">
+                <li><i class="fa fa-star"></i></li>
+                <li><i id="star2" class="fa fa-star"></i></li>
+                <li><i id="star3" class="fa fa-star"></i></li>
+            </ul>
 
-        	<span id="moveCounter" class="moves">0</span> Moves
-          <time class="timer">00:00</time>
+            <span id="moveCounter" class="moves">0</span> Moves
+            <time class="timer">00:00</time> <!-- Timer -->
             <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+                <i class="fa fa-repeat"></i> <!-- Restart -->
+            </div>
         </section>
-
         <ul id="deckList" class="deck">
         </ul>
     </div>
 
-    <div id='PopUp' class="final-score-popup">
-      <div class="popup-content">
-        <header>
-          <h1>Congratulations! You won!</h1>
-        </header>
-         <h2>Score: <span id='moveScore'></span> moves and <span id='starScore'></span> <span id='starPluralState'>stars</span></h2>
-         <h2>Time: <span id='gameTime'></span></h2>
-         <button class="button" onclick="playAgain()">Play again!</button>
-      </div>
+    <div id='PopUp' class="final-score-popup"> <!-- Game over message -->
+        <div class="popup-content">
+            <header>
+                <h1>Congratulations! You won!</h1>
+            </header>
+            <h2>Score: <span id='moveScore'></span> moves and <span id='starScore'></span> <span id='starPluralState'>stars</span></h2>
+            <h2>Time: <span id='gameTime'></span></h2>
+            <button class="button" onclick="playAgain()">Play again!</button>
+        </div>
     </div>
-
-    <script src="js/app.js"></script>
+        <script src="js/app.js"></script>
 </body>
 </html>
