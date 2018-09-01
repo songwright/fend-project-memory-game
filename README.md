@@ -30,13 +30,13 @@ To play the game, click on one of the sixteen cards in the deck to reveal its sy
 ## Dependencies
 
 1. index.html depends on
-  i. Bootstrap from https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
-  ii. Google fonts from https://fonts.googleapis.com/css?family=Coda
-  iii. Functions from app.js
-  iv. Styles from app.css.
+  1. Bootstrap from https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css
+  2. Google fonts from https://fonts.googleapis.com/css?family=Coda
+  3. Functions from app.js
+  4. Styles from app.css.
 2. app.js depends on
-  i. Links to index.html
-  ii. Styles from app.css.
+  1. Links to index.html
+  2. Styles from app.css.
 3. app.css depends on
-  i. geometry2.png
-  ii. Bootstrap
+  1. geometry2.png
+  2. Bootstrap
