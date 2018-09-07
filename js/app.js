@@ -111,8 +111,8 @@ document.addEventListener('click', function(event){
 
 // Show the card.
 function showCard(evt){
-    let clickedOnCell = evt.target;
-    clickedOnCell.className = "card open";
+    let clickedOnCard = evt.target;
+    clickedOnCard.className = "card open";
 }
 
 // Add the card to the list of open cards.
@@ -142,7 +142,7 @@ function checkMatch(){
 // Change the matching cards to the card match style.
 function moveSucceed () {
     const match1 = document.getElementById(openCardList[0]); // Get the first card in the list of open cards.
-    const match2 = document.getElementById(openCardList[1]); // Get the first second in the list of open cards.
+    const match2 = document.getElementById(openCardList[1]); // Get the second in the list of open cards.
     const symbolList = ["fa fa-smile-o", "fa fa-thumbs-up", "fa fa-heart"];
     // Choose a random success symbol.
     randomIndex = Math.floor(Math.random() * 3);
