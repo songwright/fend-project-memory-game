@@ -6,7 +6,7 @@ This is the classic memory challenge game of matching pairs.
 
 ## How to Open the Game
 
-[Click here.](https://www.ramon-sanchez.com/memorygame/index.html)
+## [Click here.](https://www.ramon-sanchez.com/memorygame/index.html)
 
 ## Playing the Game
 
